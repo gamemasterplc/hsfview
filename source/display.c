@@ -163,9 +163,21 @@ float GetViewHeight()
 	return VIEW_HEIGHT;
 }
 
-float GetViewAspectRatio()
+float GetViewAspectRatioX()
 {
 	return GetViewWidth()/(float)GetViewHeight();
+}
+
+float GetViewAspectRatioY()
+{
+	if (GetViewAspectRatioX() < (4.0f / 3.0f))
+	{
+		return GetViewAspectRatioX() / (4.0f / 3.0f);
+	}
+	else
+	{
+		return (4.0f / 3.0f) / (4.0f / 3.0f);
+	}
 }
 
 void EndFrame()
