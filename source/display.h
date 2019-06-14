@@ -34,7 +34,9 @@ float GetViewWidth();
 
 float GetViewHeight();
 
-float GetViewAspectRatio();
+float GetViewAspectRatioX();
+
+float GetViewAspectRatioY();
 
 float GetFrameRate();
 
