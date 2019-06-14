@@ -26,6 +26,7 @@ typedef struct global_settings
 	float cam_near;
 	float cam_far;
 	float cam_fov;
+	float cam_zoom;
 	float rot_speed;
 	float zoom_speed;
 	float move_speed;
@@ -37,6 +38,7 @@ static GlobalSettings globals =
 	20.0f,
 	20000.0f,
 	45.0f,
+	1.0f,
 	30.0f,
 	28.0f,
 	30.0f,
@@ -213,7 +215,7 @@ int main(int argc, char **argv)
 		}
 		GX_SetViewport(0, 0, GetRenderWidth(), GetRenderHeight(), 0, 1);
 		GX_SetScissor(0, 0, GetRenderWidth(), GetRenderHeight());
-		guPerspective(projection, globals.cam_fov, GetViewAspectRatio(), globals.cam_near, globals.cam_far);
+		guPerspective(projection, RadToDeg(2.0f * atan(tan(DegToRad(globals.cam_fov / 2.0f)) / GetViewAspectRatioY() / globals.cam_zoom)), GetViewAspectRatioX(), globals.cam_near, globals.cam_far);
 		GX_LoadProjectionMtx(projection, GX_PERSPECTIVE);
 		guMtxIdentity(mv);
 		CalcLookAt(&cam_rot, &cam_center, dist, &mv);
