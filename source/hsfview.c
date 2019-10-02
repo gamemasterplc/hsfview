@@ -72,6 +72,7 @@ int main(int argc, char **argv)
 			fseek(hsf_fp, 0L, SEEK_END);
 			file_size = ftell(hsf_fp);
 			hsf_file = malloc_aligned(32, file_size);
+			fseek(hsf_fp, 0L, SEEK_SET);
 			fread(hsf_file, file_size, 1, hsf_fp);
 		}
 	}
@@ -88,6 +89,7 @@ int main(int argc, char **argv)
 			fseek(hsf_fp, 0L, SEEK_END);
 			file_size = ftell(hsf_fp);
 			hsf_file = malloc_aligned(32, file_size);
+			fseek(hsf_fp, 0L, SEEK_SET);
 			fread(hsf_file, file_size, 1, hsf_fp);
 		}
 	}
